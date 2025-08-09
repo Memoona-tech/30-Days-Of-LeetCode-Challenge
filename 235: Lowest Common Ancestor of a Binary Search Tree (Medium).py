@@ -12,4 +12,11 @@ class Solution:
                 root = root.left
             else:
                 return root
-                
+
+
+# Q: why not TC is O(logn)
+{
+#    Short answer: we write the time as O(h) (where h = tree height) because that’s true for every BST.
+#   If the BST is balanced then h = O(log n) and you can also say O(log n). But in the worst case a BST 
+#  can be a straight chain (height h = n), so the only safe general bound is O(h) (which could be O(n) in the worst case).
+}

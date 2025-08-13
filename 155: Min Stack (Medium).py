@@ -1,5 +1,5 @@
 # SOLUTION 1
-# ------------------ O() TC ----------- O() SC --------
+# ------------------ O(1) TC ----------- O(n) SC --------
 
 class MinStack:
 
@@ -15,7 +15,7 @@ class MinStack:
     def pop(self) -> None:
         if self.arr:
             val = self.arr.pop()
-            if val == self.min_stack[-1]:
+            if val == self.min_stack[-1]:  # self.arr[-1] == self.min_stack[-1]
                 self.min_stack.pop()
 
     def top(self) -> int:
@@ -36,7 +36,7 @@ class MinStack:
 
 # Solution 2
 # NOT THE GOOD ONE DUE TO O(N) OF GET_MIN() AND SOME SPACE ISSUES LIKE OVERRIDING AND WASTES
-
+# --------- O(n) TC ------- O(n) SC ---------
 class MinStack: 
 
     def __init__(self):

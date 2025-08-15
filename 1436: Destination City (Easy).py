@@ -1,4 +1,5 @@
- # SOLUTION 1
+# BEST SOLUTION: 1
+# SOLUTION 1
 # ------------------ O(n^2) TC ----------- O(1) SC --------
 
 class Solution:
@@ -15,7 +16,7 @@ class Solution:
                 return dest
 
 # SOLUTION 2
-# ------------------ O(n^2) TC ----------- O(1) SC --------
+# ------------------ O(n^2) TC ----------- O(n) SC --------
 
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:

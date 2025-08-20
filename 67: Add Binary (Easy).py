@@ -1,0 +1,22 @@
+# SOLUTION 1
+# ------------------ O(max(n, m)) TC ----------- max(n, m) + 1 SC --------
+
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        i, j = len(a) - 1, len(b) - 1  # pointers at the end
+        carry = 0
+        result = []
+
+        while i >= 0 or j >= 0 or carry:
+            total = carry
+            if i >= 0:
+                total += int(a[i])   # add bit from a
+                i -= 1
+            if j >= 0:
+                total += int(b[j])   # add bit from b
+                j -= 1
+
+            result.append(str(total % 2))  # current bit
+            carry = total // 2             # update carry
+
+        return ''.join(reversed(result))

@@ -1,5 +1,12 @@
-# SOLUTION 1
+# easiest = Solution 1.
+# 👉 The safest for large trees = Solution 2.
+------------------------------------------------------------
+
+# SOLUTION 1: DFS (Recursive)
 # ------------------ O(n) TC ----------- O(h) SC --------
+# n = number of nodes
+# h = height of the tree
+# Extra SC includes recursion stack (O(h)), ignoring output storage
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -23,8 +30,11 @@ class Solution:
         dfs(root, "")
         return res
 
-  # SOLUTION 1
+
+# SOLUTION 2: DFS (Iterative with stack)
 # ------------------ O(n) TC ----------- O(h) SC --------
+# Iterative DFS avoids recursion but still uses stack internally.
+# SC = O(h) in skewed tree case (stack keeps up to h nodes).
 
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
@@ -49,9 +59,11 @@ class Solution:
 
         return res
 
-# SOLUTION 1
-# ------------------ O(n) TC ----------- O(h) SC --------
 
+# SOLUTION 3: BFS (Level-order traversal with queue)
+# ------------------ O(n) TC ----------- O(w) SC --------
+# w = maximum width of the tree (max nodes at any level).
+# BFS keeps entire level in queue at once, so SC = O(w).
 
 from collections import deque
 
@@ -75,4 +87,3 @@ class Solution:
                 queue.append((node.right, path + "->" + str(node.right.val)))
 
         return res
-

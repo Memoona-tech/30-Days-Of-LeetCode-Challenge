@@ -14,8 +14,42 @@ class Solution:
                         count += 1
         return count
 
-
 # SOLUTION 2
+# ------------------ O(n) TC ----------- O(1) SC --------
+
+class Solution:
+    def countTriples(self, n: int) -> int:
+        count = 0
+
+        max_m = int(math.sqrt(n))+1
+
+        for m in range(2, max_m+1):
+            for k in range(1, m):
+                
+                if (m-k) % 2 == 0:
+                    continue
+                if math.gcd(m,k) != 1:
+                    continue
+
+                a = m*m - k*k
+                b = 2*m*k
+                c = m*m + k*k
+
+                if c > n:
+                    continue
+
+                t = 1
+                while t*c <= n:
+                    ta, tb, tc = t*a, t*b, t*c
+                    if ta <= n and tb <= n:
+                        count += 2
+                    t += 1
+        return count
+                
+
+
+
+# SOLUTION 3
 # ------------------ O(n) TC ----------- O(1) SC --------
 
 import math

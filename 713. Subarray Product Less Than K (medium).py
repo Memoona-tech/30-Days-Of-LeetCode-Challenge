@@ -11,7 +11,7 @@ class Solution:
 
         while r < n:
             pr *= nums[r]
-            while pr >= k:
+            while pr >= k:               # OR   while l <= r and pr >= k:     
                 pr //= nums[l]
                 l += 1
             c += 1 + (r - l)

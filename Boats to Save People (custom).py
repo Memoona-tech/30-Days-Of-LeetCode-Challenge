@@ -9,8 +9,25 @@
 # 👉 Return the minimum number of boats needed.
 
 
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        people.sort()
+        
+        boats = 1
+        curr_weight = 0
+        
+        for w in people:
+            if curr_weight + w <= limit:
+                curr_weight += w
+            else:
+                boats += 1
+                curr_weight = w
+        
+        return boats
+
+
 # SOLUTION 1
-# ------------------ O(n) TC ----------- O(n) SC --------
+# ------------------ O(n) TC ----------- O(n) SC -------- # ❌❌❌❌ FUCKK. IT'S WRONG !!!!!!!
 
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:

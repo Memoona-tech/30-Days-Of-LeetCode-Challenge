@@ -1,5 +1,6 @@
 # BEST & MOST USED: SOL 2 & 5
 # LeetCode 3: Longest Substring Without Repeating Characters
+s = "abba"
 
 # SOLUTION 1: Sliding Window with Set (your solution)
 # ------------------ O(n) TC ----------- O(n) SC --------
@@ -59,7 +60,6 @@ class Solution4:
                 res = max(res, j - i + 1)
         return res
 
-
 # SOLUTION 5: Sliding Window with ASCII Array
 # ------------------ O(n) TC ----------- O(1) SC --------
 class Solution5:
@@ -71,3 +71,24 @@ class Solution5:
             index[ord(ch)] = r
             res = max(res, r - l + 1)
         return res
+
+
+# SOLUTION 6
+# ------------------ O(n) TC ----------- O(1) SC --------
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0:
+            return 0       
+        max_len = 0
+        freq = {}
+        l, r = 0, 0  
+              
+        while r < len(s):  
+            freq[s[r]] = freq.get(s[r], 0) + 1
+            while freq[s[r]] > 1:
+                freq[s[l]] -= 1
+                l += 1
+            curr_len = r - l + 1
+            max_len = max(max_len, curr_len)
+            r += 1
+        return max_len

@@ -15,6 +15,19 @@ class Solution:
             if cur in pos:
                 stack.append(cur)
         return res
+                                    #OR
+class Solution:
+    def nextGreaterElement(self, nums1, nums2):
+        next_greater = {}     # value -> next greater value
+        stack = []
+
+        for cur in nums2:
+            while stack and cur > stack[-1]:
+                val = stack.pop()
+                next_greater[val] = cur
+            stack.append(cur)
+
+        return [next_greater.get(x, -1) for x in nums1]
 
 
 # SOLUTION 2

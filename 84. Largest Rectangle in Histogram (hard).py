@@ -1,6 +1,7 @@
 LINK 🔗: [https://youtu.be/Bzat9vgD0fs?si=rN84bE3GGV0HhHf_] --> brute force + optimal
 
-# SOLUTION 1
+# Optimal
+# SOLUTION 1 + next
 # ------------------ O(n) TC ----------- O(n) SC --------
 
 class Solution:
@@ -22,8 +23,70 @@ class Solution:
         
         return max_area
 
+# (Canonical Version) Optimal
+# SOLUTION 1
+# ------------------ O(n) TC ----------- O(n) SC --------
 
+class Solution:
+    def largestRectangleArea(self, heights):
+        stack = []
+        max_area = 0
+        heights.append(0)  # sentinel
+
+        for i in range(len(heights)):
+            while stack and heights[i] < heights[stack[-1]]:
+                h = heights[stack.pop()]
+                w = i if not stack else i - stack[-1] - 1
+                max_area = max(max_area, h * w)
+            stack.append(i)
+
+        return max_area
+
+
+
+# Brute Force (Check every possible rectangle)
 # SOLUTION 2
+# ------------------ O(n^2) TC ----------- O(1) SC --------
+
+class Solution:
+    def largestRectangleArea(self, heights):
+        n = len(heights)
+        max_area = 0
+
+        for i in range(n):
+            min_height = heights[i]
+            for j in range(i, n):
+                min_height = min(min_height, heights[j])
+                area = min_height * (j - i + 1)
+                max_area = max(max_area, area)
+
+        return max_area
+
+
+# Slightly Better Brute Force (Expand left & right per bar)
+# SOLUTION 3
+# ------------------ O() TC ----------- O() SC --------
+
+class Solution:
+    def largestRectangleArea(self, heights):
+        n = len(heights)
+        res = 0
+
+        for i in range(n):
+            l = i
+            r = i
+
+            while l >= 0 and heights[l] >= heights[i]:
+                l -= 1
+            while r < n and heights[r] >= heights[i]:
+                r += 1
+
+            width = r - l - 1
+            res = max(res, heights[i] * width)
+
+        return res
+
+# SOLUTION 4
 # ------------------ O(n) TC ----------- O(n) SC --------
 
 class Solution:

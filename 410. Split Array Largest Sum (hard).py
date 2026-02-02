@@ -27,7 +27,7 @@ class Solution:
         return res
 
 # SOLUTION 2
-# ------------------ O() TC ----------- O() SC --------
+# ------------------ O(n × sum(nums)) TC ----------- O() SC --------
 
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:

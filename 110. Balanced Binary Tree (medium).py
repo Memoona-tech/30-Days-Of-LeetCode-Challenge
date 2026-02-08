@@ -1,5 +1,5 @@
 # SOLUTION 1
-# ------------------ O(n) TC ----------- O(1) SC --------
+# ------------------ O(n) TC ----------- O(h) SC --------
 
 # Definition for a binary tree node.
 # class TreeNode:

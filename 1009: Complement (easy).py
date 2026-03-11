@@ -1,5 +1,5 @@
 # SOLUTION 1
-# ------------------ O(n) TC ----------- O(1) SC --------
+# ------------------ O(log n) TC ----------- O(1) SC --------
 
 class Solution:
     def bitwiseComplement(self, n: int) -> int:
